@@ -2,6 +2,7 @@ package com.challenge.foro_hub.domain.respuesta;
 
 import com.challenge.foro_hub.domain.topic.Topic;
 import com.challenge.foro_hub.domain.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,10 +28,18 @@ public class Respuesta {
 
     @ManyToOne
     @JoinColumn(name = "topico")
+    @JsonBackReference
     private Topic topico;
 
     @ManyToOne
     @JoinColumn(name = "autor")
     private Usuario autor;
 
+    public Respuesta(String mensaje, LocalDateTime now, Topic topico, Usuario autor, boolean solucion) {
+        this.mensaje = mensaje;
+        this.fechaCreacion = now;
+        this.topico = topico;
+        this.autor = autor;
+        this.solucion = solucion;
+    }
 }

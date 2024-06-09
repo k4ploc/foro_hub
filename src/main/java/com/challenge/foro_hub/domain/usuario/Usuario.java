@@ -32,5 +32,10 @@ public class Usuario {
     )
     private List<Perfil> perfiles;
 
-    // Getters and Setters
+    public Usuario(DatosUsuarioRequest datos) {
+        this.nombre = datos.nombre();
+        this.correoElectronico = datos.correo();
+        this.contrasena = datos.contrasena();
+        this.perfiles = datos.perfiles();
+    }
 }

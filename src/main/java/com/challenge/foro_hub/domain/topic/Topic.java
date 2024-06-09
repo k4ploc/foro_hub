@@ -4,6 +4,7 @@ package com.challenge.foro_hub.domain.topic;
 import com.challenge.foro_hub.domain.curso.Curso;
 import com.challenge.foro_hub.domain.respuesta.Respuesta;
 import com.challenge.foro_hub.domain.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -41,7 +42,16 @@ public class Topic {
     private Curso curso;
 
     @OneToMany(mappedBy = "topico")
+    @JsonManagedReference
     private List<Respuesta> respuestas;
 
 
+    public Topic(String titulo, String mensaje, LocalDateTime now, Status status, Usuario autor, Curso curso) {
+        this.titulo = titulo;
+        this.mensaje = mensaje;
+        this.fechaCreacion = now;
+        this.status = status;
+        this.autor = autor;
+        this.curso = curso;
+    }
 }
