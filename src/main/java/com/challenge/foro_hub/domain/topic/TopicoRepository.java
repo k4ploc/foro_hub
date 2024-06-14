@@ -5,4 +5,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TopicoRepository extends JpaRepository<Topic, Long> {
+
+    Boolean existsByTitulo(String titulo);
+
+    Boolean existsByTituloAndMensaje(String titulo, String mensaje);
+
+
 }
