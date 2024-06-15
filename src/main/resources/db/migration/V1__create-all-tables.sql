@@ -24,6 +24,8 @@ CREATE TABLE usuario
     correo_electronico VARCHAR(255) NOT NULL,
     contrasena         VARCHAR(255) NOT NULL
 );
+INSERT INTO usuario(nombre, correo_electronico, contrasena)
+VALUES ('admin', 'amind@mail.com', '$2a$12$6Vrj1ND8jHQ5ryxSDQD.D.XMcIzoH60a8HKTIvQNfXuwm5wQqjfwq');
 
 CREATE TABLE perfil
 (
@@ -40,8 +42,8 @@ VALUES ('ALUMNO');
 CREATE TABLE topico
 (
     id             SERIAL PRIMARY KEY,
-    titulo         VARCHAR(255) NOT NULL UNIQUE,
-    mensaje        TEXT         NOT NULL UNIQUE,
+    titulo         VARCHAR(255) NOT NULL,
+    mensaje        TEXT         NOT NULL,
     fecha_creacion TIMESTAMP    NOT NULL,
     status         VARCHAR(50)  NOT NULL,
     autor          INTEGER      NOT NULL,
